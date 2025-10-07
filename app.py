@@ -46,6 +46,8 @@ st.markdown("""
     }
     #MainMenu {visibility: hidden;}
     footer {visibility: hidden;}
+    .viewerBadge_container__r5tak {display: none !important;}
+    header[data-testid="stHeader"] {display: none !important;}
     .stDeployButton {display: none;}
     </style>
     """, unsafe_allow_html=True)
