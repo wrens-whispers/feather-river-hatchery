@@ -15,6 +15,9 @@ def find_relevant_image(query):
     """Find image based on simple keyword rules"""
     query_lower = query.lower()
     
+    # Debug: print what we're searching
+    print(f"SEARCHING FOR IMAGE IN: {query_lower[:100]}...")
+    
     # Simple keyword to image mapping
     image_map = {
         'chinook': 'chinook.jpg',
@@ -44,14 +47,15 @@ def find_relevant_image(query):
     }
     
     # Check each keyword - look for word boundaries
+    import re
     for keyword, image_file in image_map.items():
-        # Use word boundary check - keyword must be a complete word
-        import re
         if re.search(r'\b' + re.escape(keyword) + r'\b', query_lower):
+            print(f"MATCHED KEYWORD: {keyword} -> {image_file}")
             image_path = f"images/{image_file}"
             if os.path.exists(image_path):
                 return image_path
     
+    print("NO IMAGE MATCH FOUND")
     return None
 
 def get_image_description(image_path):
