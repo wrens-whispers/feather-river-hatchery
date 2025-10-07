@@ -49,6 +49,11 @@ st.markdown("""
     .viewerBadge_container__r5tak {display: none !important;}
     header[data-testid="stHeader"] {display: none !important;}
     .stDeployButton {display: none;}
+    @media (max-width: 768px) {
+        div[data-testid="stToolbar"] {display: none !important;}
+        [class*="viewerBadge"] {display: none !important;}
+        .stApp > header {display: none !important;}
+    }
     </style>
     """, unsafe_allow_html=True)
 
