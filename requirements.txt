@@ -9,3 +9,4 @@ python-docx
 pillow
 python-dotenv
 gtts
+docx2txt
