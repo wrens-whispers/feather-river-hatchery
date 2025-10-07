@@ -12,22 +12,45 @@ def get_available_images():
     return image_files
 
 def find_relevant_image(query):
-    """Find exact or partial keyword match in image filenames"""
-    images = get_available_images()
+    """Find image based on simple keyword rules"""
     query_lower = query.lower()
     
-    # First try: exact word match
-    query_words = query_lower.split()
-    for image in images:
-        image_name = image.lower().replace('.jpg', '').replace('.jpeg', '').replace('.png', '')
-        if image_name in query_words:
-            return f"images/{image}"
+    # Simple keyword to image mapping
+    image_map = {
+        'chinook': 'chinook.jpg',
+        'eggs': 'eggs.jpg',
+        'ladder': 'ladder.jpg',
+        'spawn': 'spawning.jpg',
+        'spawning': 'spawning.jpg',
+        'steelhead': 'steelhead.jpg',
+        'trout': 'trout.jpg',
+        'lifecycle': 'lifecycle.jpg',
+        'underwater': 'underwater.jpg',
+        'viewing window': 'viewing-window.jpg',
+        'window': 'viewing-window.jpg',
+        'upstream': 'upstream.jpg',
+        'ocean': 'ocean.jpg',
+        'wild': 'wild.jpg',
+        'habitat': 'habitat.jpg',
+        'history': 'history.jpg',
+        'fishing': 'fishing.jpg',
+        'fishermen': 'fishermen.jpg',
+        'raising': 'raising-nurturing.jpg',
+        'nurturing': 'raising-nurturing.jpg',
+        'waterfall': 'jumping-waterfall.jpg',
+        'jumping': 'jumping-waterfall.jpg',
+        'springs': 'domingo-springs.jpg',
+        'domingo': 'domingo-springs.jpg'
+    }
     
-    # Second try: partial match (keyword appears anywhere in query)
-    for image in images:
-        image_name = image.lower().replace('.jpg', '').replace('.jpeg', '').replace('.png', '')
-        if image_name in query_lower:
-            return f"images/{image}"
+    # Check each keyword - look for word boundaries
+    for keyword, image_file in image_map.items():
+        # Use word boundary check - keyword must be a complete word
+        import re
+        if re.search(r'\b' + re.escape(keyword) + r'\b', query_lower):
+            image_path = f"images/{image_file}"
+            if os.path.exists(image_path):
+                return image_path
     
     return None
 

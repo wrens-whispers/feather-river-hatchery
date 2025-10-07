@@ -44,6 +44,9 @@ st.markdown("""
     [data-testid="stSidebar"] .stMarkdown, [data-testid="stSidebar"] p {
         color: #1E1E1E !important;
     }
+    #MainMenu {visibility: hidden;}
+    footer {visibility: hidden;}
+    .stDeployButton {display: none;}
     </style>
     """, unsafe_allow_html=True)
 
