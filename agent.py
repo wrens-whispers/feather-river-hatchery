@@ -62,6 +62,6 @@ def ask_question(qa_chain, question):
     # Check if there's a relevant image based on Helen's answer
     # Combine question and answer for better image matching
     combined_text = question + " " + answer
-    image_path = find_relevant_image(combined_text)
+    image_path = find_relevant_image(question)
     
     return answer, image_path
