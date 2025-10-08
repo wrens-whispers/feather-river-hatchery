@@ -37,8 +37,8 @@ def find_relevant_image(query):
         'trout': 'trout.jpg',
         'underwater': 'underwater.jpg',
         'upstream': 'upstream.jpg',
-        'window': 'window.jpg',
-        'viewing': 'window.jpg',
+        'window': 'viewing-window.jpg',
+        'viewing': 'viewing-window.jpg',
         'wild': 'wild.jpg',
     }
     
