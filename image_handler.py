@@ -1,5 +1,4 @@
 import os
-from PIL import Image
 
 def get_available_images():
     """Get list of all images in the images folder"""
@@ -12,49 +11,39 @@ def get_available_images():
     return image_files
 
 def find_relevant_image(query):
-    """Find image based on simple keyword rules"""
+    """Simple exact keyword matching - one keyword = one image"""
     query_lower = query.lower()
     
-    # Debug: print what we're searching
-    print(f"SEARCHING FOR IMAGE IN: {query_lower[:100]}...")
-    
-    # Simple keyword to image mapping
-    image_map = {
+    # Direct mapping: if query contains this exact word, show this image
+    keyword_to_image = {
         'chinook': 'chinook.jpg',
         'eggs': 'eggs.jpg',
+        'egg': 'eggs.jpg',
+        'fishermen': 'fishermen.jpg',
+        'fisherman': 'fishermen.jpg',
+        'fishing': 'fishing.jpg',
+        'fish': 'fishing.jpg',
+        'habitat': 'habitat.jpg',
+        'hatchery': 'hatchery.jpg',
         'ladder': 'ladder.jpg',
-        'spawn': 'spawning.jpg',
+        'lifecycle': 'lifecycle.jpg',
+        'life cycle': 'lifecycle.jpg',
+        'spawn': 'spawn.jpg',
         'spawning': 'spawning.jpg',
         'steelhead': 'steelhead.jpg',
         'trout': 'trout.jpg',
-        'lifecycle': 'lifecycle.jpg',
         'underwater': 'underwater.jpg',
-        'viewing window': 'viewing-window.jpg',
-        'window': 'viewing-window.jpg',
         'upstream': 'upstream.jpg',
-        'ocean': 'ocean.jpg',
+        'window': 'window.jpg',
+        'viewing': 'window.jpg',
         'wild': 'wild.jpg',
-        'habitat': 'habitat.jpg',
-        'history': 'history.jpg',
-        'fishing': 'fishing.jpg',
-        'fishermen': 'fishermen.jpg',
-        'raising': 'raising-nurturing.jpg',
-        'nurturing': 'raising-nurturing.jpg',
-        'waterfall': 'jumping-waterfall.jpg',
-        'jumping': 'jumping-waterfall.jpg',
-        'springs': 'domingo-springs.jpg',
-        'domingo': 'domingo-springs.jpg'
     }
     
-    # Check each keyword - simpler matching
-    for keyword, image_file in image_map.items():
+    # Check each keyword
+    for keyword, image_file in keyword_to_image.items():
         if keyword in query_lower:
-            print(f"MATCHED KEYWORD: {keyword} -> {image_file}")
-            image_path = f"images/{image_file}"
-            if os.path.exists(image_path):
-                return image_path
+            return f"images/{image_file}"
     
-    print("NO IMAGE MATCH FOUND")
     return None
 
 def get_image_description(image_path):
@@ -63,6 +52,5 @@ def get_image_description(image_path):
         return None
     
     filename = os.path.basename(image_path)
-    # Convert filename to readable description
     description = filename.replace('-', ' ').replace('_', ' ').replace('.jpg', '').replace('.jpeg', '').replace('.png', '')
     return description.title()

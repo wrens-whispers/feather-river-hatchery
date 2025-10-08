@@ -20,6 +20,8 @@ st.markdown("""
     <div style='background-color: #046B99; padding: 20px; margin: 10px 0 20px 0; border-bottom: 3px solid #C69C6D; text-align: center;'>
         <h1 style='color: white; margin: 0;'>Feather River Fish Hatchery</h1>
         <p style='color: #C69C6D; margin: 5px 0 0 0;'>California Department of Fish and Wildlife Virtual Interpreter</p>
+        <p style='color: white; font-size: 14px; margin: 10px 0 0 0; opacity: 0.9;'>Ask about: chinook • eggs • ladder • spawning • lifecycle • fishing • habitat • steelhead • window • hatchery • trout</p>
+    </div>
     </div>
     """, unsafe_allow_html=True)
 
@@ -76,13 +78,14 @@ if openai_key and openrouter_key and os.path.exists(hatchery_doc):
 if "messages" not in st.session_state:
     welcome_msg = """Welcome to the Feather River Fish Hatchery managed by California Department of Fish and Wildlife. I'm Helen, your virtual interpreter.
 
-**Try asking questions like:**
+**Topics to explore:**
+chinook, steelhead, trout, eggs, spawning, ladder, lifecycle, fishing, viewing window, habitat, hatchery, upstream, underwater
+
+**Example questions:**
 - How does the hatchery work?
 - Tell me about chinook salmon
 - Show me the fish ladder
-- What happens during spawning?
-- Explain the salmon lifecycle
-- How many fish does the hatchery raise?"""
+- What happens during spawning?"""
     st.session_state.messages = [{"role": "assistant", "content": welcome_msg}]
 
 # Display chat history
