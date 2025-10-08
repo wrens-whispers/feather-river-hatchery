@@ -4,9 +4,10 @@ langchain
 langchain-openai
 langchain-community
 pypdf
-chromadb
+chromadb==0.4.22
 python-docx
 pillow
 python-dotenv
 gtts
 docx2txt
+numpy==1.26.4

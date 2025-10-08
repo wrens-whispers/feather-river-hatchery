@@ -4,6 +4,10 @@ import os
 load_dotenv()
 
 import streamlit as st
+
+# Force sidebar to be open by default
+st.set_page_config(initial_sidebar_state="expanded")
+
 from agent import create_rag_agent, ask_question
 
 from gtts import gTTS
@@ -20,10 +24,29 @@ st.markdown("""
     <div style='background-color: #046B99; padding: 20px; margin: 10px 0 20px 0; border-bottom: 3px solid #C69C6D; text-align: center;'>
         <h1 style='color: white; margin: 0;'>Feather River Fish Hatchery</h1>
         <p style='color: #C69C6D; margin: 5px 0 0 0;'>California Department of Fish and Wildlife Virtual Interpreter</p>
-        <p style='color: white; font-size: 14px; margin: 10px 0 0 0; opacity: 0.9;'>Ask about: chinook • eggs • ladder • spawning • lifecycle • fishing • habitat • steelhead • window • hatchery • trout</p>
     </div>
     </div>
     """, unsafe_allow_html=True)
+# Sidebar with keywords
+with st.sidebar:
+    st.header("Topics with Images")
+    st.markdown("""
+    Ask Helen about any of these topics to see related images:
+    
+    • chinook  
+    • steelhead  
+    • trout  
+    • eggs  
+    • spawning  
+    • ladder  
+    • lifecycle  
+    • fishing  
+    • viewing window  
+    • habitat  
+    • hatchery  
+    • upstream  
+    • underwater
+    """)
 
 # Custom colors
 st.markdown("""
@@ -41,26 +64,30 @@ st.markdown("""
         color: #1E1E1E !important;
     }
     [data-testid="stSidebar"] {
-        background-color: #F5F5F0 !important;
+        background-color: #1E1E1E !important;
     }
-    [data-testid="stSidebar"] .stMarkdown, [data-testid="stSidebar"] p {
-        color: #1E1E1E !important;
+    [data-testid="stSidebar"] .stMarkdown, [data-testid="stSidebar"] p, [data-testid="stSidebar"] h2 {
+        color: white !important;
+    }
+    button[kind="header"] {
+        background-color: white !important;
+        color: #046B99 !important;
+    }
+    [data-testid="stSidebarNavButton"] button,
+    [data-testid="baseButton-header"] {
+        background-color: white !important;
+        color: #046B99 !important;
+    }
+    [aria-label="Show sidebar navigation"] {
+        background-color: white !important;
+        color: #046B99 !important;
+        border: 2px solid white !important;
     }
     #MainMenu {visibility: hidden;}
     footer {visibility: hidden;}
-    .viewerBadge_container__r5tak {display: none !important;}
-    header[data-testid="stHeader"] {display: none !important;}
-    .stDeployButton {display: none;}
-    @media (max-width: 768px) {
-        div[data-testid="stToolbar"] {display: none !important;}
-        [class*="viewerBadge"] {display: none !important;}
-        .stApp > header {display: none !important;}
-    }
     </style>
     """, unsafe_allow_html=True)
 
-# Sidebar for API key and file upload
-# Load API keys from environment
 openai_key = os.getenv("OPENAI_API_KEY")
 openrouter_key = os.getenv("OPENROUTER_API_KEY")
 
