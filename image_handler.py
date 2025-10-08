@@ -16,20 +16,20 @@ def find_relevant_image(query):
     
     # Direct mapping: if query contains this exact word, show this image
     keyword_to_image = {
-        'chinook': 'chinook.jpg',
+        'chinook eggs': 'eggs.jpg',  # More specific first
+        'salmon eggs': 'eggs.jpg',
+        'fish ladder': 'ladder.jpg',  # More specific first
+        'life cycle': 'lifecycle.jpg',  # More specific first
+        'chinook': 'chinook.jpg',  # General terms after
         'eggs': 'eggs.jpg',
         'egg': 'eggs.jpg',
-        'chinook eggs': 'eggs.jpg',
-        'salmon eggs': 'eggs.jpg',
         'fishermen': 'fishermen.jpg',
         'fisherman': 'fishermen.jpg',
         'fishing': 'fishing.jpg',
         'habitat': 'habitat.jpg',
         'hatchery': 'hatchery.jpg',
         'ladder': 'ladder.jpg',
-        'fish ladder': 'ladder.jpg',
         'lifecycle': 'lifecycle.jpg',
-        'life cycle': 'lifecycle.jpg',
         'spawn': 'spawn.jpg',
         'spawning': 'spawning.jpg',
         'steelhead': 'steelhead.jpg',
