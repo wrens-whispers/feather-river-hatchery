@@ -46,10 +46,9 @@ def find_relevant_image(query):
         'domingo': 'domingo-springs.jpg'
     }
     
-    # Check each keyword - look for word boundaries
-    import re
+    # Check each keyword - simpler matching
     for keyword, image_file in image_map.items():
-        if re.search(r'\b' + re.escape(keyword) + r'\b', query_lower):
+        if keyword in query_lower:
             print(f"MATCHED KEYWORD: {keyword} -> {image_file}")
             image_path = f"images/{image_file}"
             if os.path.exists(image_path):
