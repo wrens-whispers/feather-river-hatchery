@@ -59,9 +59,7 @@ def ask_question(qa_chain, question):
     response = qa_chain.invoke({"query": question})
     answer = response["result"]
     
-    # Check if there's a relevant image based on Helen's answer
-    # Combine question and answer for better image matching
-    combined_text = question + " " + answer
+    # Match image based on question keywords only
     image_path = find_relevant_image(question)
     
     return answer, image_path
