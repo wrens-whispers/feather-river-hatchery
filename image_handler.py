@@ -33,7 +33,7 @@ def find_relevant_image(query):
         'ladder': 'ladder.jpg',
         'lifecycle': 'lifecycle.jpg',
         'look': 'underwater.jpg',
-        'ocean': 'ocean',
+        'ocean': 'ocean.jpg',
         'spawn': 'spawn.jpg',
         'spawning': 'spawning.jpg',
         'steelhead': 'steelhead.jpg',
