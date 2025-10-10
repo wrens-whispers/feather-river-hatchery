@@ -7,7 +7,7 @@ import streamlit as st
 st.set_page_config(initial_sidebar_state="expanded")
 
 from agent import create_rag_agent, ask_question
-from gtts import gTTS
+from speech_handler import text_to_speech_azure
 import base64
 
 # Add CDFW centered logo and banner
@@ -138,13 +138,14 @@ if prompt := st.chat_input("Ask about the hatchery..."):
             with st.spinner("Thinking..."):
                 answer, image_path = ask_question(st.session_state.qa_chain, prompt)
                 st.write(answer)
-                # Add speak button
+                # Azure TTS
                 if answer and answer.strip():
-                    tts = gTTS(text=answer, lang='en', slow=False)
-                    tts.save("response.mp3")
-                    with open("response.mp3", "rb") as audio_file:
-                        audio_bytes = audio_file.read()
-                    st.audio(audio_bytes, format="audio/mp3", autoplay=True)
+                    azure_key = os.getenv("AZURE_SPEECH_KEY")
+                    azure_region = os.getenv("AZURE_SPEECH_REGION")
+                    if azure_key and azure_region:
+                        audio_data = text_to_speech_azure(answer, azure_key, azure_region)
+                        if audio_data:
+                            st.audio(audio_data, format="audio/wav", autoplay=True)
                 # Show image if found
                 if image_path:
                     st.image(image_path, width=800)

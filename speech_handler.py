@@ -1,29 +1,23 @@
 import os
 import azure.cognitiveservices.speech as speechsdk
-import streamlit as st
 
-def speech_to_text(speech_key, speech_region):
+def text_to_speech_azure(text, speech_key, speech_region):
     """
-    Capture speech from microphone and convert to text
-    Returns the transcribed text or None if error
+    Convert text to speech using Azure Speech Services
+    Returns audio bytes
     """
     speech_config = speechsdk.SpeechConfig(subscription=speech_key, region=speech_region)
-    speech_config.speech_recognition_language = "en-US"
     
-    audio_config = speechsdk.audio.AudioConfig(use_default_microphone=True)
-    speech_recognizer = speechsdk.SpeechRecognizer(speech_config=speech_config, audio_config=audio_config)
+    # Set voice - using a warm, friendly female voice
+    speech_config.speech_synthesis_voice_name = "en-US-JennyNeural"
     
-    st.info("🎤 Listening... Speak now!")
+    # Configure audio output to memory
+    speech_synthesizer = speechsdk.SpeechSynthesizer(speech_config=speech_config, audio_config=None)
     
-    result = speech_recognizer.recognize_once_async().get()
+    # Synthesize speech
+    result = speech_synthesizer.speak_text_async(text).get()
     
-    if result.reason == speechsdk.ResultReason.RecognizedSpeech:
-        return result.text
-    elif result.reason == speechsdk.ResultReason.NoMatch:
-        st.warning("Sorry, I didn't catch that. Please try again.")
+    if result.reason == speechsdk.ResultReason.SynthesizingAudioCompleted:
+        return result.audio_data
+    else:
         return None
-    elif result.reason == speechsdk.ResultReason.Canceled:
-        st.error("Speech recognition canceled. Please try again.")
-        return None
-    
-    return None
