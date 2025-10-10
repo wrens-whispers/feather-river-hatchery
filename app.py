@@ -1,15 +1,12 @@
 from dotenv import load_dotenv
 import os
-
 load_dotenv()
-
 import streamlit as st
 
 # Force sidebar to be open by default
 st.set_page_config(initial_sidebar_state="expanded")
 
 from agent import create_rag_agent, ask_question
-
 from gtts import gTTS
 import base64
 
@@ -122,6 +119,9 @@ for message in st.session_state.messages:
         st.write(message["content"])
         if "image" in message and message["image"]:
             st.image(message["image"], width=400)
+
+# Voice input tip
+st.info("💡 **Tip:** Use your device's voice typing feature in the text box below for hands-free input!")
 
 # Chat input
 if prompt := st.chat_input("Ask about the hatchery..."):
