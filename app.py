@@ -10,6 +10,10 @@ from agent import create_rag_agent, ask_question
 from speech_handler import text_to_speech_azure
 import base64
 
+# Initialize language in session state
+if 'language' not in st.session_state:
+    st.session_state.language = 'en'
+    
 # Add CDFW centered logo and banner
 st.markdown("""
     <div style='text-align: center;'>
@@ -102,6 +106,8 @@ if openai_key and openrouter_key and os.path.exists(hatchery_doc):
 if "messages" not in st.session_state:
     welcome_msg = """Welcome to the Feather River Fish Hatchery managed by California Department of Fish and Wildlife. I'm Helen, your virtual interpreter.
 
+**For Spanish interpreter, say 'español' / Para intérprete en español, diga 'español'**
+
 **Topics to explore:**
 chinook, steelhead, trout, eggs, spawning, ladder, lifecycle, fishing, viewing window, habitat, hatchery, upstream, underwater
 
@@ -128,6 +134,10 @@ if prompt := st.chat_input("Ask about the hatchery..."):
     if "qa_chain" not in st.session_state:
         st.warning("Please upload a document and enter your API key first.")
     else:
+        # Check if user is requesting Spanish   
+        if 'español' in prompt.lower():     
+            st.session_state.language = 'es' 
+
         # Add user message
         st.session_state.messages.append({"role": "user", "content": prompt})
         with st.chat_message("user"):
@@ -143,7 +153,7 @@ if prompt := st.chat_input("Ask about the hatchery..."):
                     azure_key = os.getenv("AZURE_SPEECH_KEY")
                     azure_region = os.getenv("AZURE_SPEECH_REGION")
                     if azure_key and azure_region:
-                        audio_data = text_to_speech_azure(answer, azure_key, azure_region)
+                        audio_data = text_to_speech_azure(answer, azure_key, azure_region, st.session_state.language)
                         if audio_data:
                             st.audio(audio_data, format="audio/wav", autoplay=True)
                 # Show image if found
