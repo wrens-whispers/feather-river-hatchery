@@ -3,6 +3,10 @@ import os
 load_dotenv()
 import streamlit as st
 
+# Initialize language in session state FIRST
+if 'language' not in st.session_state:
+    st.session_state.language = 'en'
+
 # Force sidebar to be open by default
 st.set_page_config(initial_sidebar_state="expanded")
 
@@ -10,10 +14,6 @@ from agent import create_rag_agent, ask_question
 from speech_handler import text_to_speech_azure
 import base64
 
-# Initialize language in session state
-if 'language' not in st.session_state:
-    st.session_state.language = 'en'
-    
 # Add CDFW centered logo and banner
 st.markdown("""
     <div style='text-align: center;'>
