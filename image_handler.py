@@ -16,34 +16,63 @@ def find_relevant_image(query):
     
     # Direct mapping: if query contains this exact word, show this image
     keyword_to_image = {
-        'chinook eggs': 'eggs.jpg',  # More specific first
+        # More specific multi-word phrases first (English and Spanish)
+        'chinook eggs': 'eggs.jpg',
+        'huevos de chinook': 'eggs.jpg',
         'salmon eggs': 'eggs.jpg',
-        'fish ladder': 'ladder.jpg',  # More specific first
-        'life cycle': 'lifecycle.jpg',  # More specific first
-        'chinook': 'chinook.jpg',  # General terms after
-        'eggs': 'eggs.jpg',
+        'huevos de salmón': 'eggs.jpg',
+        'fish ladder': 'ladder.jpg',
+        'escalera de peces': 'ladder.jpg',
+        'life cycle': 'lifecycle.jpg',
+        'ciclo de vida': 'lifecycle.jpg',
+        'bajo el agua': 'underwater.jpg',
+        'río arriba': 'upstream.jpg',
+
+        # General single words (English and Spanish alphabetically mixed)
+        'chinook': 'chinook.jpg',
+        'ciclo': 'lifecycle.jpg',
+        'criadero': 'hatchery.jpg',
+        'desovar': 'spawn.jpg',
+        'desove': 'spawning.jpg',
         'egg': 'eggs.jpg',
+        'eggs': 'eggs.jpg',
+        'escalera': 'ladder.jpg',
         'fish': 'fish.jpg',
-        'fishermen': 'fishermen.jpg',
         'fisherman': 'fishermen.jpg',
+        'fishermen': 'fishermen.jpg',
         'fishing': 'fishing.jpg',
         'habitat': 'habitat.jpg',
+        'hábitat': 'habitat.jpg',
         'hatchery': 'hatchery.jpg',
+        'historia': 'history.jpg',
         'history': 'history.jpg',
+        'huevo': 'eggs.jpg',
+        'huevos': 'eggs.jpg',
         'ladder': 'ladder.jpg',
         'lifecycle': 'lifecycle.jpg',
         'look': 'underwater.jpg',
+        'mirar': 'underwater.jpg',
+        'observación': 'viewing-window.jpg',
         'ocean': 'ocean.jpg',
+        'océano': 'ocean.jpg',
+        'pesca': 'fishing.jpg',
+        'pescador': 'fishermen.jpg',
+        'pescadores': 'fishermen.jpg',
+        'pez': 'fish.jpg',
+        'salvaje': 'wild.jpg',
         'spawn': 'spawn.jpg',
         'spawning': 'spawning.jpg',
         'steelhead': 'steelhead.jpg',
         'trout': 'trout.jpg',
-        'watch': 'underwater.jpg',
+        'trucha': 'trout.jpg',
         'underwater': 'underwater.jpg',
         'upstream': 'upstream.jpg',
-        'window': 'viewing-window.jpg',
+        'ventana': 'viewing-window.jpg',
+        'ver': 'underwater.jpg',
         'viewing': 'viewing-window.jpg',
+        'watch': 'underwater.jpg',
         'wild': 'wild.jpg',
+        'window': 'viewing-window.jpg',
     }
     
     # Check each keyword
