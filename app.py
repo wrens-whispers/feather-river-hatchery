@@ -134,9 +134,9 @@ if prompt := st.chat_input("Ask about the hatchery..."):
     if "qa_chain" not in st.session_state:
         st.warning("Please upload a document and enter your API key first.")
     else:
-        # Check if user is requesting Spanish   
-        if 'español' in prompt.lower():     
-            st.session_state.language = 'es' 
+        # Check if user is requesting Spanish
+        if 'español' in prompt.lower() or 'espanol' in prompt.lower():
+            st.session_state.language = 'es'
 
         # Add user message
         st.session_state.messages.append({"role": "user", "content": prompt})
