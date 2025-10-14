@@ -13,7 +13,7 @@ def text_to_speech_azure(text, speech_key, speech_region, language='en'):
     
     # Select voice based on language
     if language == 'es':
-        speech_config.speech_synthesis_voice_name = "es-MX-DaliaNeural"  # Mexican Spanish
+        speech_config.speech_synthesis_voice_name = "es-MX-CarlotaNeural"  # Mexican Spanish
     else:
         speech_config.speech_synthesis_voice_name = "en-US-JennyNeural"
     
