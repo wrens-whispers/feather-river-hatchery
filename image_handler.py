@@ -28,12 +28,14 @@ def find_relevant_image(query):
         'bajo el agua': 'underwater.jpg',
         'río arriba': 'upstream.jpg',
 
-        # General single words (English and Spanish alphabetically mixed)
+        # General single words (English and Spanish with conjugations)
         'chinook': 'chinook.jpg',
         'ciclo': 'lifecycle.jpg',
         'criadero': 'hatchery.jpg',
-        'desovar': 'spawn.jpg',
-        'desove': 'spawning.jpg',
+        'desova': 'spawn.jpg',  # he/she/it spawns
+        'desovan': 'spawn.jpg',  # they spawn
+        'desovar': 'spawn.jpg',  # to spawn (infinitive)
+        'desove': 'spawning.jpg',  # spawning (noun)
         'egg': 'eggs.jpg',
         'eggs': 'eggs.jpg',
         'escalera': 'ladder.jpg',
@@ -51,11 +53,18 @@ def find_relevant_image(query):
         'ladder': 'ladder.jpg',
         'lifecycle': 'lifecycle.jpg',
         'look': 'underwater.jpg',
-        'mirar': 'underwater.jpg',
+        'mira': 'underwater.jpg',  # look! (command) / he/she looks
+        'miran': 'underwater.jpg',  # they look
+        'mirar': 'underwater.jpg',  # to look (infinitive)
+        'miro': 'underwater.jpg',  # I look
+        'observa': 'viewing-window.jpg',  # observe! / he/she observes
         'observación': 'viewing-window.jpg',
+        'observan': 'viewing-window.jpg',  # they observe
+        'observo': 'viewing-window.jpg',  # I observe
         'ocean': 'ocean.jpg',
         'océano': 'ocean.jpg',
-        'pesca': 'fishing.jpg',
+        'pesca': 'fishing.jpg',  # fishing (noun) / he/she fishes
+        'pescan': 'fishing.jpg',  # they fish
         'pescador': 'fishermen.jpg',
         'pescadores': 'fishermen.jpg',
         'pez': 'fish.jpg',
@@ -67,8 +76,11 @@ def find_relevant_image(query):
         'trucha': 'trout.jpg',
         'underwater': 'underwater.jpg',
         'upstream': 'upstream.jpg',
+        've': 'underwater.jpg',  # see! (command) / he/she sees
+        'ven': 'underwater.jpg',  # they see / come here
         'ventana': 'viewing-window.jpg',
-        'ver': 'underwater.jpg',
+        'veo': 'underwater.jpg',  # I see
+        'ver': 'underwater.jpg',  # to see (infinitive)
         'viewing': 'viewing-window.jpg',
         'watch': 'underwater.jpg',
         'wild': 'wild.jpg',
