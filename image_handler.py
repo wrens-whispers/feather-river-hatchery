@@ -69,6 +69,7 @@ def find_relevant_image(query):
         'pescadores': 'fishermen.jpg',
         'pez': 'fish.jpg',
         'salvaje': 'wild.jpg',
+        'see': 'underwater.jpg',
         'spawn': 'spawn.jpg',
         'spawning': 'spawning.jpg',
         'steelhead': 'steelhead.jpg',

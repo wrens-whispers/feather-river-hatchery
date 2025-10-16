@@ -106,15 +106,14 @@ if openai_key and openrouter_key and os.path.exists(hatchery_doc):
 if "messages" not in st.session_state:
     welcome_msg = """Welcome to the Feather River Fish Hatchery managed by California Department of Fish and Wildlife. I'm Helen, your virtual interpreter.
 
-**For Spanish interpreter, say 'español' / Para intérprete en español, diga 'español'**
+**Para intérprete en español, diga 'español'**
 
 **Topics to explore:**
 chinook, steelhead, trout, eggs, spawning, ladder, lifecycle, fishing, viewing window, habitat, hatchery, upstream, underwater
 
 **Example questions:**
 - How does the hatchery work?
-- Tell me about chinook salmon
-- Show me the fish ladder
+- Where can I see the fish?
 - What happens during spawning?"""
     st.session_state.messages = [{"role": "assistant", "content": welcome_msg}]
 
