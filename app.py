@@ -99,8 +99,13 @@ hatchery_doc = "CDFW-Feather River Fish Hatchery.docx"  # Your main document fil
 if openai_key and openrouter_key and os.path.exists(hatchery_doc):
     # Create agent if not already created
     if "qa_chain" not in st.session_state:
-        with st.spinner("Loading hatchery information..."):
-            st.session_state.qa_chain = create_rag_agent(hatchery_doc, openai_key, openrouter_key)
+        try:
+            with st.spinner("Loading hatchery information..."):
+                st.session_state.qa_chain = create_rag_agent(hatchery_doc, openai_key, openrouter_key)
+            st.success("✅ Helen is ready!")
+        except Exception as e:
+            st.error(f"Error loading agent: {str(e)}")
+            st.info("Please refresh the page or contact support.")
 
 # Chat interface
 if "messages" not in st.session_state:
