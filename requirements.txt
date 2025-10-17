@@ -3,6 +3,7 @@ openai
 langchain
 langchain-openai
 langchain-community
+langchain-text-splitters
 pypdf
 chromadb==0.4.22
 python-docx
