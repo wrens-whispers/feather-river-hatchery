@@ -131,7 +131,7 @@ for message in st.session_state.messages:
             st.image(message["image"], width=400)
 
 # Voice input tip
-st.info("💡 **Tip:** Use your device's voice typing feature in the text box below for hands-free input!")
+st.warning("⚠️ **Safari users:** If the app won't load, please use Chrome or Firefox for best compatibility.")
 
 # Chat input
 if prompt := st.chat_input("Ask about the hatchery..."):
